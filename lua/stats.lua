@@ -87,7 +87,7 @@ local colors = {
 }
 local function getPlainUpdate(direction)
 	return function(stats, file, total, mpps, mbit, wireMbit)
-		file:write(("%s[%s] %s%s: %.2f Mpps, %.0f Mbit/s (%.0f Mbit/s with framing)\n"):format(
+		file:write(("%s[%s] %s%s: %.4f Mpps, %.2f Mbit/s (%.2f Mbit/s with framing)\n"):format(
 			getColorCode(colors[direction]), stats.name, direction, getColorCode(),
 			mpps, mbit, wireMbit
 		))
@@ -97,7 +97,7 @@ end
 
 local function getPlainFinal(direction)
 	return function(stats, file)
-		file:write(("%s[%s] %s%s: %.2f (StdDev %.2f) Mpps, %.0f (StdDev %.0f) Mbit/s (%.0f Mbit/s with framing), total %d packets with %d bytes (incl. CRC)\n"):format(
+		file:write(("%s[%s] %s%s: %.4f (StdDev %.4f) Mpps, %.2f (StdDev %.0f) Mbit/s (%.2f Mbit/s with framing), total %d packets with %d bytes (incl. CRC)\n"):format(
 			getColorCode(colors[direction]), stats.name, direction, getColorCode(),
 			stats.mpps.avg, stats.mpps.stdDev,
 			stats.mbit.avg, stats.mbit.stdDev,
